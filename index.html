@@ -1,377 +1,463 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AIスマートナビ｜人生に余白をつくるための学び</title>
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #f6f7f4;
-        --card: #ffffff;
-        --text: #1f2a30;
-        --muted: #5d6b73;
-        --accent: #3e6b5a;
-        --accent-light: #dfeee7;
-        --line: #e3e7e1;
-        --shadow: 0 16px 40px rgba(31, 42, 48, 0.08);
-        --shadow-soft: 0 10px 24px rgba(31, 42, 48, 0.06);
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIスマートナビ | AIによる効率化と生産性で、人生に余白を</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --text: #1c2430;
+      --muted: #556273;
+      --line: #dce3ee;
+      --accent: #325dff;
+      --accent-soft: #e8eeff;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(32, 58, 122, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, #edf1ff 0, transparent 42%),
+        radial-gradient(circle at 100% 15%, #eef9ff 0, transparent 30%),
+        var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 84px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 48px 0;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .label::before {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.8;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 7vw, 3.2rem);
+      line-height: 1.28;
+      letter-spacing: 0.01em;
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 4.8vw, 2rem);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-top: 18px;
+      max-width: 38ch;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      box-shadow: 0 10px 20px rgba(50, 93, 255, 0.22);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 24px rgba(50, 93, 255, 0.26);
+      opacity: 0.96;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid #92abff;
+      outline-offset: 2px;
+    }
+
+    .btn-subtle {
+      background: var(--surface);
+      color: var(--accent);
+      border-color: #cdd8ff;
+      box-shadow: none;
+    }
+
+    .hero {
+      padding: 20px 0 54px;
+    }
+
+    .hero-card {
+      padding: 28px 22px;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -90px auto;
+      width: 220px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, #c8d7ff 0%, #e9efff 58%, transparent 70%);
+      z-index: -1;
+      opacity: 0.9;
+    }
+
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-meta {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+      margin-top: 20px;
+    }
+
+    .feature {
+      padding: 18px 16px;
+    }
+
+    .feature p {
+      font-size: 0.97rem;
+    }
+
+    .philosophy {
+      padding: 24px 20px;
+    }
+
+    .philosophy p + p {
+      margin-top: 14px;
+    }
+
+    .mid-cta {
+      margin-top: 24px;
+      text-align: center;
+      padding: 22px 16px;
+      background: linear-gradient(145deg, #f8faff 0%, #f2f6ff 100%);
+      border: 1px solid #d9e3ff;
+      border-radius: var(--radius);
+    }
+
+    .news-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .news-card {
+      padding: 18px 16px;
+    }
+
+    .news-date {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: #f3f6fb;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-bottom: 10px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .faq-item {
+      padding: 16px;
+    }
+
+    .faq-item dt {
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .faq-item dd {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .final-cta {
+      text-align: center;
+      padding: 28px 18px;
+    }
+
+    .final-cta p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    footer {
+      padding: 26px 0 22px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    .floating-cta {
+      position: fixed;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+      width: min(760px, calc(100% - 20px));
+      z-index: 40;
+      transition: transform 0.28s ease, opacity 0.28s ease;
+    }
+
+    .floating-cta.is-hidden {
+      transform: translate(-50%, 115%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .floating-cta-inner {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #d7e0f5;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(31, 56, 112, 0.16);
+    }
+
+    .floating-cta .btn {
+      flex: 1;
+      padding-block: 10px;
+      font-size: 0.9rem;
+      box-shadow: none;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 62px 0;
       }
 
-      * {
-        box-sizing: border-box;
+      .hero-card {
+        padding: 44px;
       }
 
-      body {
-        margin: 0;
-        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
-          "Yu Gothic", system-ui, -apple-system, sans-serif;
-        color: var(--text);
-        background: var(--bg);
-        line-height: 1.8;
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
+      .feature,
+      .news-card,
+      .faq-item {
+        padding: 20px;
       }
 
-      .container {
-        width: min(1040px, 90%);
-        margin: 0 auto;
-        padding: 0 0 120px;
-      }
-
-      header {
-        padding: 72px 0 40px;
-      }
-
-      .hero {
-        background: var(--card);
-        border-radius: 28px;
-        padding: 40px;
-        display: grid;
-        gap: 24px;
-        box-shadow: var(--shadow);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before,
-      .hero::after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(62, 107, 90, 0.18), transparent 70%);
-        width: 240px;
-        height: 240px;
-        top: -80px;
-        right: -80px;
-      }
-
-      .hero::after {
-        width: 180px;
-        height: 180px;
-        bottom: -60px;
-        left: -60px;
-        opacity: 0.6;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.9rem;
-        color: var(--accent);
-        font-weight: 600;
-        background: var(--accent-light);
-        padding: 6px 14px;
-        border-radius: 999px;
-      }
-
-      h1 {
-        margin: 16px 0 12px;
-        font-size: clamp(2rem, 5vw, 3rem);
-        line-height: 1.3;
-      }
-
-      .lead {
-        font-size: 1.05rem;
-        color: var(--muted);
-        margin: 0 0 24px;
-        max-width: 34rem;
-      }
-
-      .cta {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--accent);
-        color: #ffffff;
-        padding: 14px 28px;
-        border-radius: 999px;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        box-shadow: 0 12px 24px rgba(62, 107, 90, 0.25);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .cta:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 16px 28px rgba(62, 107, 90, 0.3);
-      }
-
-      .hero-meta {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 16px;
-        margin-top: 24px;
-      }
-
-      .hero-meta-item {
-        background: #f2f4f2;
-        border-radius: 16px;
-        padding: 14px 16px;
-        font-size: 0.95rem;
-        color: var(--muted);
-      }
-
-      section {
-        margin-top: 64px;
-      }
-
-      .section-title {
-        font-size: clamp(1.4rem, 4vw, 2rem);
-        margin-bottom: 16px;
-      }
-
-      .section-lead {
-        color: var(--muted);
-        margin-bottom: 24px;
-      }
-
-      .grid-2,
-      .grid-3 {
-        display: grid;
-        gap: 20px;
-      }
-
-      .grid-3 {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      }
-
-      .grid-2 {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      }
-
-      .card {
-        background: var(--card);
-        border-radius: 20px;
-        padding: 22px;
-        border: 1px solid var(--line);
-        box-shadow: var(--shadow-soft);
-      }
-
-      .card p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .purpose {
-        background: linear-gradient(120deg, #ffffff 0%, #f3f5f1 100%);
-        border-radius: 24px;
+      .philosophy {
         padding: 28px;
-        border: 1px solid var(--line);
-        box-shadow: var(--shadow-soft);
       }
+    }
 
-      .purpose p {
-        margin: 0 0 16px;
-        color: var(--muted);
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
       }
-
-      .purpose p:last-child {
-        margin-bottom: 0;
-      }
-
-      .news-list {
-        display: grid;
-        gap: 16px;
-      }
-
-      .news-card {
-        display: grid;
-        gap: 8px;
-      }
-
-      .news-date {
-        font-size: 0.85rem;
-        color: var(--muted);
-      }
-
-      .faq {
-        display: grid;
-        gap: 16px;
-      }
-
-      .faq-item h3 {
-        margin: 0 0 8px;
-        font-size: 1.05rem;
-      }
-
-      .cta-final {
-        text-align: center;
-        background: var(--card);
-        border-radius: 28px;
-        padding: 36px 24px;
-        box-shadow: var(--shadow);
-      }
-
-      footer {
-        text-align: center;
-        color: var(--muted);
-        font-size: 0.85rem;
-        margin-top: 48px;
-      }
-
-      .fixed-cta {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.94);
-        backdrop-filter: blur(8px);
-        border-top: 1px solid var(--line);
-        padding: 10px 16px;
-        display: none;
-        z-index: 10;
-      }
-
-      .fixed-cta-inner {
-        display: flex;
-        justify-content: center;
-      }
-
-      .fixed-cta .cta {
-        width: min(420px, 100%);
-      }
-
-      @media (max-width: 720px) {
-        header {
-          padding-top: 56px;
-        }
-
-        .hero {
-          padding: 28px;
-        }
-
-        .container {
-          padding-bottom: 160px;
-        }
-
-        .fixed-cta {
-          display: block;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <div class="hero">
-          <div>
-            <span class="eyebrow">AIを使って、人生に余白をつくる</span>
-            <h1>AIによる効率化と生産性で、人生に余白を</h1>
-            <p class="lead">
-              課題・就活・卒論。<br />
-              「AIを使える人」が、時間の主導権を取り戻すためのナビ。
-            </p>
-            <a class="cta" href="https://note.com/_____">noteメンバーシップで見る</a>
-            <div class="hero-meta">
-              <div class="hero-meta-item">短時間で必要な情報を拾える構成</div>
-              <div class="hero-meta-item">学業・就活・仕事に直結する視点</div>
-              <div class="hero-meta-item">更新を追いやすいシンプルな導線</div>
-            </div>
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero section" id="top">
+      <div class="wrap">
+        <article class="hero-card card">
+          <p class="label">AI SMART NAVI</p>
+          <h1>AIによる効率化と生産性で、人生に余白を</h1>
+          <p class="lead">課題・就活・仕事。<br>「AIを使える人」が、時間の主導権を取り戻すためのナビ。</p>
+          <div class="hero-actions">
+            <a class="btn" href="https://note.com/_____" target="_blank" rel="noopener noreferrer">noteメンバーシップで見る</a>
           </div>
-        </div>
-      </header>
+          <p class="hero-meta">必要なところから、静かに始められる設計です。</p>
+        </article>
+      </div>
+    </section>
 
-      <section>
-        <h2 class="section-title">AIスマートナビで何ができるか</h2>
-        <div class="grid-2">
-          <div class="card"><p>AIツールを“ちゃんと使える”ようになる。</p></div>
-          <div class="card"><p>AIを使った効率化・生産性向上に取り組める。</p></div>
-          <div class="card"><p>AIの最新情報をキャッチアップできる。</p></div>
-          <div class="card"><p>学業・就活・仕事にすぐ使える形に落とし込める。</p></div>
+    <section class="section" id="features">
+      <div class="wrap">
+        <p class="label">What You Can Do</p>
+        <h2>何ができるか</h2>
+        <div class="grid-4">
+          <article class="feature card"><p>AIツールを“ちゃんと使える”ようになる。</p></article>
+          <article class="feature card"><p>AIを使った効率化・生産性向上。</p></article>
+          <article class="feature card"><p>AIの最新情報をキャッチアップできる。</p></article>
+          <article class="feature card"><p>学業・就活・仕事にすぐ使える形に落とし込める。</p></article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <h2 class="section-title">このサービスが目指していること</h2>
-        <div class="purpose">
-          <p>
-            AIに代替されないための学びを、無理のないペースで続けられるようにしたいと考えています。
-          </p>
-          <p>
-            課題・授業・仕事を効率化することで、本当に大切なことに使える時間を少しずつ増やしていく。
-            そのための静かな伴走役として設計しています。
-          </p>
+    <section class="section" id="philosophy">
+      <div class="wrap">
+        <p class="label">Philosophy</p>
+        <h2>このサービスが目指していること</h2>
+        <article class="philosophy card">
+          <p>AIに代替されないために、道具としてのAIを理解し、自分で考えて使える力を育てていくことを大切にしています。</p>
+          <p>課題・授業・仕事を効率化し、浮いた時間を本当に大切な学びや挑戦、人との時間に戻していくことを目指しています。</p>
+        </article>
+        <div class="mid-cta">
+          <a class="btn btn-subtle" href="https://note.com/_____" target="_blank" rel="noopener noreferrer">noteメンバーシップで見る</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <h2 class="section-title">News / Updates</h2>
-        <div class="news-list">
-          <article class="card news-card">
+    <section class="section" id="news">
+      <div class="wrap">
+        <p class="label">News / Updates</p>
+        <h2>更新情報</h2>
+        <div class="news-stack">
+          <article class="news-card card">
             <span class="news-date">2026.02.06</span>
             <p>AIスマートナビ、学生向け有料サブスクリプションを開始しました。</p>
           </article>
         </div>
-      </section>
-
-      <section>
-        <h2 class="section-title">よくある質問</h2>
-        <div class="faq">
-          <div class="card faq-item">
-            <h3>Q. AI初心者でも使えますか？</h3>
-            <p>A. もちろんです。むしろAI初心者こそ、早めに使い始める価値があります。</p>
-          </div>
-          <div class="card faq-item">
-            <h3>Q. どのコンテンツから見ればいいですか？</h3>
-            <p>
-              A. AI初心者の方は、ChatGPT・Gemini・NotebookLMから始めるのがおすすめです。
-            </p>
-          </div>
-          <div class="card faq-item">
-            <h3>Q. いつでもメンバーシップに参加できますか？</h3>
-            <p>A. はい、いつでも参加できます。</p>
-          </div>
-          <div class="card faq-item">
-            <h3>Q. このサービスのメリットは何ですか？</h3>
-            <p>
-              A. 学習・課題・授業・仕事を効率化することで、本当に大切なことに使える時間が増えることです。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="cta-final">
-        <h2 class="section-title">まずは、必要なところだけ拾ってみてください。</h2>
-        <p class="section-lead">全部読む必要はありません。</p>
-        <a class="cta" href="https://note.com/_____">
-          noteメンバーシップでAIスマートナビを見る
-        </a>
-      </section>
-
-      <footer>
-        <p>© 2026 AIスマートナビ</p>
-      </footer>
-    </div>
-
-    <div class="fixed-cta">
-      <div class="fixed-cta-inner">
-        <a class="cta" href="https://note.com/_____">noteメンバーシップで見る</a>
       </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <p class="label">FAQ</p>
+        <h2>よくある質問</h2>
+        <dl class="faq-list">
+          <div class="faq-item card">
+            <dt>Q. AI初心者でも使えますか？</dt>
+            <dd>A. もちろんです。むしろAI初心者こそ、早めに使い始める価値があります。</dd>
+          </div>
+          <div class="faq-item card">
+            <dt>Q. どのコンテンツから見ればいいですか？</dt>
+            <dd>A. AI初心者の方は、ChatGPT・Gemini・NotebookLMから始めるのがおすすめです。</dd>
+          </div>
+          <div class="faq-item card">
+            <dt>Q. いつでもメンバーシップに参加できますか？</dt>
+            <dd>A. はい、いつでも参加できます。</dd>
+          </div>
+          <div class="faq-item card">
+            <dt>Q. このサービスのメリットは何ですか？</dt>
+            <dd>A. 学習・課題・授業・仕事を効率化することで、本当に大切なことに使える時間が増えることです。</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="join">
+      <div class="wrap">
+        <article class="final-cta card">
+          <p>まずは、必要なところだけ拾ってみてください。<br>全部読む必要はありません。</p>
+          <a class="btn" href="https://note.com/_____" target="_blank" rel="noopener noreferrer">noteメンバーシップでAIスマートナビを見る</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <small>© AIスマートナビ</small>
     </div>
-  </body>
+  </footer>
+
+  <div class="floating-cta" id="floatingCta" aria-hidden="false">
+    <div class="floating-cta-inner wrap">
+      <a class="btn" href="https://note.com/_____" target="_blank" rel="noopener noreferrer">noteメンバーシップで見る</a>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const bar = document.getElementById('floatingCta');
+      if (!bar) return;
+      let lastY = window.scrollY;
+      const toggleBar = () => {
+        const y = window.scrollY;
+        const down = y > lastY;
+        if (y < 80) {
+          bar.classList.remove('is-hidden');
+        } else if (down) {
+          bar.classList.add('is-hidden');
+        } else {
+          bar.classList.remove('is-hidden');
+        }
+        lastY = y;
+      };
+      window.addEventListener('scroll', toggleBar, { passive: true });
+    })();
+  </script>
+</body>
 </html>
