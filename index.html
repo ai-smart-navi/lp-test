@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AIスマートナビ｜大学生向けAI活用テンプレ</title>
+    <title>AIスマートナビ｜人生に余白をつくるための学び</title>
     <style>
       :root {
         color-scheme: light;
-        --bg: #f7f8fb;
+        --bg: #f6f7f4;
         --card: #ffffff;
-        --text: #1d2330;
-        --muted: #5f6b7a;
-        --accent: #2a6ef4;
-        --accent-dark: #1d4fc8;
-        --border: #e6e9f0;
-        --shadow: 0 14px 35px rgba(20, 34, 60, 0.08);
-        --shadow-soft: 0 10px 24px rgba(20, 34, 60, 0.06);
+        --text: #1f2a30;
+        --muted: #5d6b73;
+        --accent: #3e6b5a;
+        --accent-light: #dfeee7;
+        --line: #e3e7e1;
+        --shadow: 0 16px 40px rgba(31, 42, 48, 0.08);
+        --shadow-soft: 0 10px 24px rgba(31, 42, 48, 0.06);
       }
 
       * {
@@ -24,11 +24,11 @@
 
       body {
         margin: 0;
-        font-family: "Helvetica Neue", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
-          "Noto Sans JP", "Yu Gothic", system-ui, -apple-system, sans-serif;
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
+          "Yu Gothic", system-ui, -apple-system, sans-serif;
         color: var(--text);
         background: var(--bg);
-        line-height: 1.7;
+        line-height: 1.8;
       }
 
       a {
@@ -37,42 +37,69 @@
       }
 
       .container {
-        width: min(1100px, 92%);
+        width: min(1040px, 90%);
         margin: 0 auto;
-        padding: 0 0 80px;
+        padding: 0 0 120px;
       }
 
       header {
-        padding: 80px 0 40px;
+        padding: 72px 0 40px;
       }
 
       .hero {
-        display: grid;
-        gap: 32px;
-        align-items: center;
         background: var(--card);
-        border-radius: 24px;
+        border-radius: 28px;
         padding: 40px;
+        display: grid;
+        gap: 24px;
         box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(62, 107, 90, 0.18), transparent 70%);
+        width: 240px;
+        height: 240px;
+        top: -80px;
+        right: -80px;
+      }
+
+      .hero::after {
+        width: 180px;
+        height: 180px;
+        bottom: -60px;
+        left: -60px;
+        opacity: 0.6;
       }
 
       .eyebrow {
-        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
         color: var(--accent);
         font-weight: 600;
-        letter-spacing: 0.04em;
+        background: var(--accent-light);
+        padding: 6px 14px;
+        border-radius: 999px;
       }
 
       h1 {
-        margin: 12px 0 16px;
-        font-size: clamp(1.9rem, 3vw, 3rem);
+        margin: 16px 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
         line-height: 1.3;
       }
 
       .lead {
         font-size: 1.05rem;
         color: var(--muted);
-        margin-bottom: 24px;
+        margin: 0 0 24px;
+        max-width: 34rem;
       }
 
       .cta {
@@ -80,34 +107,33 @@
         align-items: center;
         justify-content: center;
         background: var(--accent);
-        color: white;
+        color: #ffffff;
         padding: 14px 28px;
         border-radius: 999px;
         font-weight: 600;
-        box-shadow: 0 12px 20px rgba(42, 110, 244, 0.25);
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        letter-spacing: 0.02em;
+        box-shadow: 0 12px 24px rgba(62, 107, 90, 0.25);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
 
       .cta:hover {
-        background: var(--accent-dark);
         transform: translateY(-2px);
-        box-shadow: 0 16px 28px rgba(42, 110, 244, 0.3);
+        box-shadow: 0 16px 28px rgba(62, 107, 90, 0.3);
       }
 
-      .badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
+      .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
         margin-top: 24px;
       }
 
-      .badge {
-        background: #eef3ff;
-        color: var(--accent-dark);
-        padding: 6px 14px;
-        border-radius: 999px;
-        font-size: 0.85rem;
-        font-weight: 600;
+      .hero-meta-item {
+        background: #f2f4f2;
+        border-radius: 16px;
+        padding: 14px 16px;
+        font-size: 0.95rem;
+        color: var(--muted);
       }
 
       section {
@@ -115,175 +141,136 @@
       }
 
       .section-title {
-        font-size: clamp(1.4rem, 2.2vw, 2rem);
-        margin-bottom: 20px;
+        font-size: clamp(1.4rem, 4vw, 2rem);
+        margin-bottom: 16px;
       }
 
       .section-lead {
         color: var(--muted);
-        margin-bottom: 28px;
+        margin-bottom: 24px;
       }
 
+      .grid-2,
       .grid-3 {
         display: grid;
         gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       }
 
       .card {
         background: var(--card);
         border-radius: 20px;
-        padding: 24px;
+        padding: 22px;
+        border: 1px solid var(--line);
         box-shadow: var(--shadow-soft);
-        border: 1px solid var(--border);
-      }
-
-      .card h3 {
-        margin: 0 0 10px;
-        font-size: 1.15rem;
       }
 
       .card p {
-        margin: 0 0 12px;
+        margin: 0;
         color: var(--muted);
       }
 
-      .before-after {
-        background: #f0f4ff;
-        padding: 10px 14px;
-        border-radius: 12px;
-        font-size: 0.9rem;
-        color: #2d3f66;
-      }
-
-      .code-block {
-        background: #111827;
-        color: #e2e8f0;
-        border-radius: 16px;
-        padding: 20px;
-        font-family: "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono",
-          monospace;
-        font-size: 0.9rem;
-        line-height: 1.6;
+      .purpose {
+        background: linear-gradient(120deg, #ffffff 0%, #f3f5f1 100%);
+        border-radius: 24px;
+        padding: 28px;
+        border: 1px solid var(--line);
         box-shadow: var(--shadow-soft);
       }
 
-      .code-block + .code-block {
-        margin-top: 16px;
+      .purpose p {
+        margin: 0 0 16px;
+        color: var(--muted);
       }
 
-      .steps {
+      .purpose p:last-child {
+        margin-bottom: 0;
+      }
+
+      .news-list {
         display: grid;
         gap: 16px;
       }
 
-      .step {
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-        background: var(--card);
-        border-radius: 18px;
-        padding: 20px;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow-soft);
-      }
-
-      .step-number {
-        min-width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        background: #eef3ff;
-        color: var(--accent-dark);
+      .news-card {
         display: grid;
-        place-items: center;
-        font-weight: 700;
+        gap: 8px;
       }
 
-      .pricing {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      }
-
-      .price-card {
-        background: var(--card);
-        border-radius: 20px;
-        padding: 26px;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-      }
-
-      .price {
-        font-size: 2rem;
-        font-weight: 700;
-        margin: 6px 0 12px;
-      }
-
-      .pill {
-        display: inline-block;
-        background: #f5f6fb;
-        color: var(--muted);
-        padding: 6px 12px;
-        border-radius: 999px;
+      .news-date {
         font-size: 0.85rem;
-        margin-bottom: 10px;
+        color: var(--muted);
       }
 
       .faq {
         display: grid;
-        gap: 14px;
+        gap: 16px;
       }
 
-      .faq-item {
-        background: var(--card);
-        border-radius: 16px;
-        padding: 20px;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow-soft);
-      }
-
-      .faq-item h4 {
-        margin: 0 0 10px;
+      .faq-item h3 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
       }
 
       .cta-final {
         text-align: center;
         background: var(--card);
-        padding: 40px 24px;
-        border-radius: 24px;
+        border-radius: 28px;
+        padding: 36px 24px;
         box-shadow: var(--shadow);
       }
 
       footer {
-        margin-top: 40px;
         text-align: center;
         color: var(--muted);
         font-size: 0.85rem;
+        margin-top: 48px;
       }
 
-      footer a {
-        color: var(--accent);
+      .fixed-cta {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid var(--line);
+        padding: 10px 16px;
+        display: none;
+        z-index: 10;
+      }
+
+      .fixed-cta-inner {
+        display: flex;
+        justify-content: center;
+      }
+
+      .fixed-cta .cta {
+        width: min(420px, 100%);
       }
 
       @media (max-width: 720px) {
         header {
-          padding-top: 60px;
+          padding-top: 56px;
         }
 
         .hero {
           padding: 28px;
         }
 
-        .badges {
-          justify-content: flex-start;
+        .container {
+          padding-bottom: 160px;
         }
 
-        .step {
-          flex-direction: column;
-        }
-
-        .step-number {
-          width: 42px;
+        .fixed-cta {
+          display: block;
         }
       }
     </style>
@@ -293,157 +280,98 @@
       <header>
         <div class="hero">
           <div>
-            <p class="eyebrow">大学生のためのAIテンプレ集</p>
-            <h1>就活・レポート・時間管理が、AIでスッと速くなる。</h1>
+            <span class="eyebrow">AIを使って、人生に余白をつくる</span>
+            <h1>AIによる効率化と生産性で、人生に余白を</h1>
             <p class="lead">
-              1日5分で「使えるAI」が増える。迷ったら開けばOKなテンプレと手順を、
-              同級生目線でまとめています。
+              課題・就活・卒論。<br />
+              「AIを使える人」が、時間の主導権を取り戻すためのナビ。
             </p>
-            <a class="cta" href="https://note.com/_____">noteメンバーシップを見に行く</a>
-            <div class="badges">
-              <span class="badge">🎓 大学生向け</span>
-              <span class="badge">📎 コピペOK</span>
-              <span class="badge">⚡ すぐ使える</span>
+            <a class="cta" href="https://note.com/_____">noteメンバーシップで見る</a>
+            <div class="hero-meta">
+              <div class="hero-meta-item">短時間で必要な情報を拾える構成</div>
+              <div class="hero-meta-item">学業・就活・仕事に直結する視点</div>
+              <div class="hero-meta-item">更新を追いやすいシンプルな導線</div>
             </div>
           </div>
         </div>
       </header>
 
       <section>
-        <h2 class="section-title">何ができる？</h2>
-        <p class="section-lead">AIスマートナビは、日常で「詰まる瞬間」を短くするための入口です。</p>
-        <div class="grid-3">
-          <div class="card">
-            <h3>📝 就活</h3>
-            <p>自己分析・ES・企業研究の方向性がまとまる。</p>
-            <div class="before-after">Before: 白紙で手が止まる → After: たたき台がすぐできる</div>
-          </div>
-          <div class="card">
-            <h3>📚 授業</h3>
-            <p>レポート・発表準備の流れが早くなる。</p>
-            <div class="before-after">Before: 何から書くか迷う → After: 構成が先に見える</div>
-          </div>
-          <div class="card">
-            <h3>🧭 生活</h3>
-            <p>予定整理・タスク管理が整う。</p>
-            <div class="before-after">Before: 予定が散らかる → After: 今日やることが明確に</div>
-          </div>
+        <h2 class="section-title">AIスマートナビで何ができるか</h2>
+        <div class="grid-2">
+          <div class="card"><p>AIツールを“ちゃんと使える”ようになる。</p></div>
+          <div class="card"><p>AIを使った効率化・生産性向上に取り組める。</p></div>
+          <div class="card"><p>AIの最新情報をキャッチアップできる。</p></div>
+          <div class="card"><p>学業・就活・仕事にすぐ使える形に落とし込める。</p></div>
         </div>
       </section>
 
       <section>
-        <h2 class="section-title">テンプレを少しだけ見せる</h2>
-        <p class="section-lead">コピペしてすぐ使える形で用意しています。</p>
-        <div class="code-block">
-          【就活：自己PRたたき台】
-          あなたは就活のコーチです。
-          私の強みは「〇〇」です。具体例は「〇〇」です。
-          200字で自己PRのたたき台を作ってください。
-          面接で深掘りされる質問も3つ出してください。
-        </div>
-        <div class="code-block">
-          【レポート：構成づくり】
-          テーマは「〇〇」。授業は「〇〇」です。
-          1200字のレポート構成を、見出し付きで提案してください。
-          参考になりそうな論点を3つ提示してください。
-        </div>
-        <div class="code-block">
-          【時間管理：今日の優先順位】
-          今日やることは「〇〇」「〇〇」「〇〇」。
-          所要時間はそれぞれ「〇〇分」。
-          優先順位と、今からの時間割を作ってください。
+        <h2 class="section-title">このサービスが目指していること</h2>
+        <div class="purpose">
+          <p>
+            AIに代替されないための学びを、無理のないペースで続けられるようにしたいと考えています。
+          </p>
+          <p>
+            課題・授業・仕事を効率化することで、本当に大切なことに使える時間を少しずつ増やしていく。
+            そのための静かな伴走役として設計しています。
+          </p>
         </div>
       </section>
 
       <section>
-        <h2 class="section-title">使い方（3ステップ）</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div>
-              <h3>困ったら開く</h3>
-              <p>「何から始めるか迷う」ときに、最初の1歩を作るための場所です。</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div>
-              <h3>状況に近いテンプレを選ぶ</h3>
-              <p>就活・授業・生活の3カテゴリで整理しているので、必要な場面から選べます。</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <div>
-              <h3>コピペして、自分用に微調整</h3>
-              <p>自分の言葉に合わせて少し編集するだけで、成果物の質が安定しやすくなります。</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="section-title">料金</h2>
-        <div class="pricing">
-          <div class="price-card">
-            <span class="pill">noteメンバーシップ</span>
-            <h3>月額500円</h3>
-            <p class="price">¥500 / 月</p>
-            <p>テンプレ・手順・更新を、大学生が使いやすい形でまとめていく予定です。</p>
-          </div>
-          <div class="price-card">
-            <h3>含まれるもの</h3>
-            <ul>
-              <li>用途別テンプレの追加</li>
-              <li>使い方のミニ解説</li>
-              <li>更新ログの共有</li>
-            </ul>
-            <h3>安心ポイント</h3>
-            <ul>
-              <li>いつでも停止できる形を目指しています</li>
-              <li>必要なところだけ使ってOKな設計です</li>
-            </ul>
-          </div>
+        <h2 class="section-title">News / Updates</h2>
+        <div class="news-list">
+          <article class="card news-card">
+            <span class="news-date">2026.02.06</span>
+            <p>AIスマートナビ、学生向け有料サブスクリプションを開始しました。</p>
+          </article>
         </div>
       </section>
 
       <section>
         <h2 class="section-title">よくある質問</h2>
         <div class="faq">
-          <div class="faq-item">
-            <h4>ChatGPT初心者でも使える？</h4>
-            <p>はい。専門用語はなるべく減らして、コピペだけでも動く形を意識しています。</p>
+          <div class="card faq-item">
+            <h3>Q. AI初心者でも使えますか？</h3>
+            <p>A. もちろんです。むしろAI初心者こそ、早めに使い始める価値があります。</p>
           </div>
-          <div class="faq-item">
-            <h4>どれくらい時間が減る？</h4>
-            <p>作業内容によりますが、まずは「考える時間が短くなる」ことを目指しています。</p>
-          </div>
-          <div class="faq-item">
-            <h4>何から見ればいい？</h4>
-            <p>「就活」「授業」「生活」の中で一番困っているところから覗いてみてください。</p>
-          </div>
-          <div class="faq-item">
-            <h4>途中参加でも大丈夫？</h4>
-            <p>はい。必要なタイミングで参加できる形にする予定です。</p>
-          </div>
-          <div class="faq-item">
-            <h4>怪しくない？</h4>
+          <div class="card faq-item">
+            <h3>Q. どのコンテンツから見ればいいですか？</h3>
             <p>
-              AIスマートナビは、煽らない・誇張しない・実用重視の運営方針で進めています。
+              A. AI初心者の方は、ChatGPT・Gemini・NotebookLMから始めるのがおすすめです。
+            </p>
+          </div>
+          <div class="card faq-item">
+            <h3>Q. いつでもメンバーシップに参加できますか？</h3>
+            <p>A. はい、いつでも参加できます。</p>
+          </div>
+          <div class="card faq-item">
+            <h3>Q. このサービスのメリットは何ですか？</h3>
+            <p>
+              A. 学習・課題・授業・仕事を効率化することで、本当に大切なことに使える時間が増えることです。
             </p>
           </div>
         </div>
       </section>
 
       <section class="cta-final">
-        <h2 class="section-title">まずは覗いてみてOK</h2>
-        <p class="section-lead">無理な勧誘はしません。必要そうなら入るくらいの気軽さで。</p>
-        <a class="cta" href="https://note.com/_____">noteメンバーシップへ</a>
+        <h2 class="section-title">まずは、必要なところだけ拾ってみてください。</h2>
+        <p class="section-lead">全部読む必要はありません。</p>
+        <a class="cta" href="https://note.com/_____">
+          noteメンバーシップでAIスマートナビを見る
+        </a>
       </section>
 
       <footer>
-        <p>© 2024 AIスマートナビ | <a href="mailto:contact@example.com">連絡先</a></p>
+        <p>© 2026 AIスマートナビ</p>
       </footer>
+    </div>
+
+    <div class="fixed-cta">
+      <div class="fixed-cta-inner">
+        <a class="cta" href="https://note.com/_____">noteメンバーシップで見る</a>
+      </div>
     </div>
   </body>
 </html>
