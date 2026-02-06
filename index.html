@@ -175,6 +175,10 @@
       font-size: 0.88rem;
     }
 
+    .hero-meta p + p {
+      margin-top: 4px;
+    }
+
     .grid-4 {
       display: grid;
       gap: 12px;
@@ -211,6 +215,56 @@
       display: grid;
       gap: 12px;
       margin-top: 18px;
+    }
+
+    .free-preview {
+      padding: 24px 20px;
+    }
+
+    .free-preview p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .float-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: floatIn 0.7s ease forwards;
+    }
+
+    .float-in.delay-1 {
+      animation-delay: 0.12s;
+    }
+
+    .float-in.delay-2 {
+      animation-delay: 0.22s;
+    }
+
+    .float-in.delay-3 {
+      animation-delay: 0.3s;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+      transition-delay: 0.05s;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes floatIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .news-card {
@@ -342,12 +396,15 @@
       <div class="wrap">
         <article class="hero-card card">
           <p class="label">AI SMART NAVI</p>
-          <h1>AIによる効率化と生産性で、人生に余白を</h1>
-          <p class="lead">課題・就活・仕事。<br>「AIを使える人」が、時間の主導権を取り戻すためのナビ。</p>
+          <h1 class="float-in">AIによる効率化と生産性で、人生に余白を</h1>
+          <p class="lead float-in delay-1">AIを使いこなして市場価値を上げ、<br>AIに代替されない存在になるためのナビ。</p>
           <div class="hero-actions">
-            <a class="btn" href="https://note.com/_____" target="_blank" rel="noopener noreferrer">noteメンバーシップで見る</a>
+            <a class="btn float-in delay-2" href="https://note.com/_____" target="_blank" rel="noopener noreferrer">noteメンバーシップで見る</a>
           </div>
-          <p class="hero-meta">必要なところから、静かに始められる設計です。</p>
+          <div class="hero-meta float-in delay-3">
+            <p>スタンダードプラン：月額500円</p>
+            <p>学生向けAIコンテンツ100本以上を提供</p>
+          </div>
         </article>
       </div>
     </section>
@@ -357,10 +414,10 @@
         <p class="label">What You Can Do</p>
         <h2>何ができるか</h2>
         <div class="grid-4">
-          <article class="feature card"><p>AIツールを“ちゃんと使える”ようになる。</p></article>
-          <article class="feature card"><p>AIを使った効率化・生産性向上。</p></article>
-          <article class="feature card"><p>AIの最新情報をキャッチアップできる。</p></article>
-          <article class="feature card"><p>学業・就活・仕事にすぐ使える形に落とし込める。</p></article>
+          <article class="feature card reveal"><p>AIツールを“ちゃんと使える”ようになる。</p></article>
+          <article class="feature card reveal"><p>AIを使った効率化・生産性向上。</p></article>
+          <article class="feature card reveal"><p>AIの最新情報をキャッチアップできる。</p></article>
+          <article class="feature card reveal"><p>学業・就活・仕事にすぐ使える形に落とし込める。</p></article>
         </div>
       </div>
     </section>
@@ -369,7 +426,7 @@
       <div class="wrap">
         <p class="label">Philosophy</p>
         <h2>このサービスが目指していること</h2>
-        <article class="philosophy card">
+        <article class="philosophy card reveal">
           <p>AIに代替されないために、道具としてのAIを理解し、自分で考えて使える力を育てていくことを大切にしています。</p>
           <p>課題・授業・仕事を効率化し、浮いた時間を本当に大切な学びや挑戦、人との時間に戻していくことを目指しています。</p>
         </article>
@@ -379,12 +436,23 @@
       </div>
     </section>
 
+    <section class="section" id="free-contents">
+      <div class="wrap">
+        <p class="label">Free Contents</p>
+        <h2>まずは無料コンテンツで雰囲気を確認できます</h2>
+        <article class="free-preview card reveal">
+          <p>無料で閲覧できるコンテンツを30本用意しているので、まずは雰囲気を確認してから参加できます。</p>
+          <a class="btn btn-subtle" href="https://www.notion.so/2ff3d35808ea807cad79c405fdd9c030?source=copy_link" target="_blank" rel="noopener noreferrer">無料コンテンツを見る（Notion）</a>
+        </article>
+      </div>
+    </section>
+
     <section class="section" id="news">
       <div class="wrap">
         <p class="label">News / Updates</p>
         <h2>更新情報</h2>
         <div class="news-stack">
-          <article class="news-card card">
+          <article class="news-card card reveal">
             <span class="news-date">2026.02.06</span>
             <p>AIスマートナビ、学生向け有料サブスクリプションを開始しました。</p>
           </article>
@@ -397,19 +465,19 @@
         <p class="label">FAQ</p>
         <h2>よくある質問</h2>
         <dl class="faq-list">
-          <div class="faq-item card">
+          <div class="faq-item card reveal">
             <dt>Q. AI初心者でも使えますか？</dt>
             <dd>A. もちろんです。むしろAI初心者こそ、早めに使い始める価値があります。</dd>
           </div>
-          <div class="faq-item card">
+          <div class="faq-item card reveal">
             <dt>Q. どのコンテンツから見ればいいですか？</dt>
             <dd>A. AI初心者の方は、ChatGPT・Gemini・NotebookLMから始めるのがおすすめです。</dd>
           </div>
-          <div class="faq-item card">
+          <div class="faq-item card reveal">
             <dt>Q. いつでもメンバーシップに参加できますか？</dt>
             <dd>A. はい、いつでも参加できます。</dd>
           </div>
-          <div class="faq-item card">
+          <div class="faq-item card reveal">
             <dt>Q. このサービスのメリットは何ですか？</dt>
             <dd>A. 学習・課題・授業・仕事を効率化することで、本当に大切なことに使える時間が増えることです。</dd>
           </div>
@@ -419,7 +487,7 @@
 
     <section class="section" id="join">
       <div class="wrap">
-        <article class="final-cta card">
+        <article class="final-cta card reveal">
           <p>まずは、必要なところだけ拾ってみてください。<br>全部読む必要はありません。</p>
           <a class="btn" href="https://note.com/_____" target="_blank" rel="noopener noreferrer">noteメンバーシップでAIスマートナビを見る</a>
         </article>
@@ -457,6 +525,24 @@
         lastY = y;
       };
       window.addEventListener('scroll', toggleBar, { passive: true });
+    })();
+
+    (() => {
+      const items = document.querySelectorAll('.reveal');
+      if (!items.length) return;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      items.forEach((item, index) => {
+        item.style.transitionDelay = `${Math.min(index * 0.04, 0.24)}s`;
+        observer.observe(item);
+      });
     })();
   </script>
 </body>
