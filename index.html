@@ -217,6 +217,49 @@
       margin-top: 18px;
     }
 
+    .service-contents {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .service-item {
+      padding: 18px 16px;
+      border-left: 3px solid #d6e0fa;
+    }
+
+    .service-item.is-main {
+      border-left-color: var(--accent);
+      background: linear-gradient(145deg, #f8faff 0%, #f3f7ff 100%);
+    }
+
+    .service-item h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .service-item p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .service-item .status {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: #5c6d86;
+      background: #f2f5fb;
+      border: 1px solid #dae3f2;
+      border-radius: 999px;
+      padding: 3px 10px;
+    }
+
+    .service-item.is-soon {
+      opacity: 0.88;
+      border-left-style: dashed;
+    }
+
     .free-preview {
       padding: 24px 20px;
     }
@@ -418,6 +461,37 @@
           <article class="feature card reveal"><p>AIを使った効率化・生産性向上。</p></article>
           <article class="feature card reveal"><p>AIの最新情報をキャッチアップできる。</p></article>
           <article class="feature card reveal"><p>学業・就活・仕事にすぐ使える形に落とし込める。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="service-contents">
+      <div class="wrap">
+        <p class="label">Service Contents</p>
+        <h2>提供コンテンツ</h2>
+        <div class="service-contents">
+          <article class="service-item is-main card reveal">
+            <h3>学生向けコンテンツ（メイン）</h3>
+            <p>課題・授業・就活に直結するAI活用法を、実践ベースで整理して届けます。ChatGPT / Gemini / NotebookLM などを中心に扱います。</p>
+          </article>
+          <article class="service-item card reveal">
+            <h3>起業家向けコンテンツ</h3>
+            <p>海外の成功起業家・ビジネス事例をもとに、AI時代の稼ぎ方・ビジネスモデル・思考法を、学生でも理解しやすい粒度で解説します。</p>
+          </article>
+          <article class="service-item card reveal">
+            <h3>Discordコミュニティ（Disco）</h3>
+            <p>メンバー同士がAI活用、学習、起業・キャリアを中心に情報交換できる交流スペースです。定期的な交流・イベントも予定しています。</p>
+          </article>
+          <article class="service-item is-soon card reveal">
+            <h3>社会人向けコンテンツ</h3>
+            <p>業務効率化・生産性向上を中心に、実務で使えるAI活用を段階的に拡充予定です。</p>
+            <span class="status">Coming Soon</span>
+          </article>
+          <article class="service-item is-soon card reveal">
+            <h3>AIニュース・最新動向</h3>
+            <p>海外を含むAIトレンドや重要アップデートを、要点を押さえて継続的に整理する予定です。</p>
+            <span class="status">Coming Soon</span>
+          </article>
         </div>
       </div>
     </section>
